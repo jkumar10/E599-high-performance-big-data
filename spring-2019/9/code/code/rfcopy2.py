@@ -41,6 +41,12 @@ df2=df1.withColumn('isDelay',when(df1.DepDelay <= 0,'No').otherwise('Yes'))
 
 # Here we are passing the feature columns into vector assembler that we will use for classification.
 # output column is defined as "features"
+# You can mention more input features depending upon your data but eventuall the tree will converge and 
+# it tends to overfit the model.
+# 'Year','Month','DayofMonth','DayOfWeek','DepTime','CRSDepTime','ArrTime','CRSArrTime','FlightNum',
+#'ActualElapsedTime','CRSElapsedTime','AirTime','ArrDelay','Distance','TaxiIn','TaxiOut','CarrierDelay',
+# 'WeatherDelay','SecurityDelay','0SDelay','LateAircraftDelay'.
+
 assembler = VectorAssembler(
   inputCols=['Year',
              'Month',
